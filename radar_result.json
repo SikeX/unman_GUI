@@ -1,0 +1,47 @@
+{
+ "cmd": "detected_info",
+ "param": {
+  "target": [
+   {
+    "signType": 3,
+    "signName": "可疑空中目标1",
+    "createdTime": "2021-06-19 11:17:31",
+    "updateTime": "2021-06-19 11:17:31",
+    "lat": 35.9072093,
+    "lng": 120.255138
+   },
+   {
+    "signType": 2,
+    "signName": "可疑水上目标2",
+    "createdTime": "2021-06-19 11:17:31",
+    "updateTime": "2021-06-19 11:17:31",
+    "lat": 35.843107,
+    "lng": 120.4687951
+   },
+   {
+    "signType": 2,
+    "signName": "可疑水上目标3",
+    "createdTime": "2021-06-19 11:17:31",
+    "updateTime": "2021-06-19 11:17:31",
+    "lat": 35.7195167,
+    "lng": 120.373423
+   },
+   {
+    "signType": 3,
+    "signName": "可疑空中目标4",
+    "createdTime": "2021-06-19 11:17:31",
+    "updateTime": "2021-06-19 11:17:31",
+    "lat": 35.6660741,
+    "lng": 120.2694585
+   },
+   {
+    "signType": 2,
+    "signName": "可疑水上目标5",
+    "createdTime": "2021-06-19 11:17:31",
+    "updateTime": "2021-06-19 11:17:31",
+    "lat": 35.7550251,
+    "lng": 120.2712106
+   }
+  ]
+ }
+}
