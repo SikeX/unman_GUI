@@ -8,15 +8,17 @@ from PyQt5.QtCore import QObject, pyqtSlot
 import sys
 
 class Ais_det(QObject):
-    def __init__(self,aisdata=None,ais=None,ais_obj=None,obj_num=0):
+    def __init__(self,ip_p="127.0.0.1/6789",aisdata=None,ais=None,ais_obj=None,obj_num=0):
         super().__init__()
+        self.ip_p = ip_p
         self.aisdata = aisdata
         self.ais = ais
         self.ais_obj = ais_obj
         self.obj_num = obj_num
 
-    @pyqtSlot(result=str)
-    def ais_set(self):
+    @pyqtSlot(str,result=str)
+    def ais_set(self,ip_p):
+        self.ip_p = ip_p
         # 设定坐标原点（地图左上角）
         ori = (35.958385067108026, 120.04422809586613)
         global ori_xy
@@ -49,7 +51,7 @@ class Ais_det(QObject):
         
         return "AIS初始化成功\n" + "AIS个数:" + str(len(aisdata)) + "\n" + "目标个数:" + str(obj_num) 
             
-    @pyqtSlot()
+    @pyqtSlot(result=str)
     def ais_det(self):
         aisdata = self.aisdata
         ais = self.ais
@@ -59,4 +61,4 @@ class Ais_det(QObject):
         for k in range(len(aisdata)):
             #print('AIS{}在第{}秒的检测结果'.format(k+1,t))
             #print('----------------')
-            ais[k+1].run([ais_obj[i].move() for i in range(obj_num)])
+            ais[k+1].run([ais_obj[i].move() for i in range(obj_num)], self.ip_p)

@@ -265,7 +265,7 @@ import "./qmls"
                         img_src: "images/boat.png"
                         btn_txt: "AIS"
                         onClickedLeft:{
-                            dataText.text += Ais_det.ais_set() + "\n"
+                            dataText.text += Ais_det.ais_set(ip_p) + "\n"
                             }
                         }
                     // 启动按钮
