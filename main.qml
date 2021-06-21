@@ -21,8 +21,10 @@ import "./qmls"
     
     property point  clickPos: "0,0"
 
-    property string ip_p
+    // ip和端口号
+    property string ip_p: "127.0.0.1/1234"
 
+    // 菜单是否可见
     property bool menu1:false
     property bool menu2:false
     property bool menu3:false
@@ -35,6 +37,7 @@ import "./qmls"
     property var ais_obj_info
     property var ais_data
 
+    // 无人设备信息
     property var deviceinfo
     property var devicedata
 
@@ -114,6 +117,7 @@ import "./qmls"
         //         }        
         //     }
         // }
+        // 标题栏
         Rectangle{
             id:headLabel
             color: "transparent"
@@ -126,6 +130,7 @@ import "./qmls"
                 color:"white"
             }
         }
+        // 中间部分
         Rectangle{
             id: middelArea
             color: "white"
@@ -202,23 +207,16 @@ import "./qmls"
                         visible:menu2 ? true : false
                         Layout.fillHeight:true
                         color: "black"
-                        Text{
-                            text:"ha\nha\nha\nha\nha\n"
-                            color:"white"
-                        }
                     }
                     Connection{
                         id: menu3Con
                         visible:menu2 ? true : false
                         Layout.fillHeight:true
                         color: "black"
-                        Text{
-                            text:"ha\nha\nha\nha\nha\n"
-                            color:"white"
-                        }
                     }   
                 } 
                 
+                // 侧边栏
                 ColumnLayout{
                     id:slideMenu
                     anchors.left:parent.left
@@ -277,6 +275,9 @@ import "./qmls"
                         img_src: "images/activate.png"
                         btn_txt: "启动"
                         onClickedLeft:{
+                            if(ip_p == "127.0.0.1/1234"){
+                                dataText.text += "未设置ip和端口，将在本地运行" + "\n"
+                            }
                             myTimer.start()
                             dataText.text += "无人设备已启动\n雷达已启动\nAIS已启动\n"
                             }
@@ -487,6 +488,7 @@ import "./qmls"
             attrs.counter=0;
         }
     }
+    // 无人设备Timer
     Timer{
         id:deviceTimer
         interval: 2000
@@ -506,7 +508,8 @@ import "./qmls"
         }
         
     }
-
+    
+    // 雷达和ais的Timer(间隔1s)
     Timer{
         id:myTimer
         interval: 1000
