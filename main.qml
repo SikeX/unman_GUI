@@ -6,7 +6,7 @@ import QtPositioning 5.9
 import QtLocation 5.9
 import Qt.labs.settings 1.0
 import QtQuick.XmlListModel 2.0
-import QtMultimedia 5.10
+// import QtMultimedia 5.10
 
 import "./qmls"
 
@@ -374,18 +374,18 @@ import "./qmls"
                     Layout.fillHeight:true
                     Layout.fillWidth:true
 
-                    Video{
-                        id:videoPlay
-                        anchors.fill:parent
-                        source:"boat.mp4"
+                    // Video{
+                    //     id:videoPlay
+                    //     anchors.fill:parent
+                    //     source:"boat.mp4"
 
-                        MouseArea{
-                            anchors.fill:parent
-                            onClicked:{
-                                videoPlay.play()
-                            }
-                        }
-                    }
+                    //     MouseArea{
+                    //         anchors.fill:parent
+                    //         onClicked:{
+                    //             videoPlay.play()
+                    //         }
+                    //     }
+                    // }
 
                 }
                 Rectangle{
@@ -397,36 +397,43 @@ import "./qmls"
                     Layout.fillWidth:true
 
                     ScrollView{
-                    id: view
-                    anchors.fill: parent
+                        id: view
+                        anchors.fill: parent
 
-                    TextArea {
-                        id: dataText
-                        property int preContentHeight: 0
-                        cursorVisible: false
-                        readOnly: true
-                        wrapMode: TextEdit.Wrap
-                        focus: false
-                        textFormat: TextEdit.AutoText
-                        selectByMouse: true
-                        selectionColor: "gray"
-                        selectByKeyboard: false
-                        text : "Log Info\n"
-                        font{family:"微软雅黑";pixelSize:15}
-                        color: "white"
-                        // onContentHeightChanged:{
-                        //     console.log(contentHeight)
-                        //     console.log(view.flickableItem.contentY)
-                             
-                        //     // = contentHeight
-                        //     }
+                        function scrollToBottom() {
+                           ScrollBar.vertical.position = 1.0 - ScrollBar.vertical.size
                         }
+
+                        contentWidth: children.implicitWidth
+                        contentHeight: children.implicitHeight
+                        ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+                        clip: true
+
+                        TextArea {
+                            id: dataText
+                            KeyNavigation.priority: KeyNavigation.BeforeItem
+                            KeyNavigation.tab: textField
+                            property int preContentHeight: 0
+                            cursorVisible: false
+                            readOnly: true
+                            wrapMode: TextEdit.Wrap
+                            focus: false
+                            textFormat: TextEdit.AutoText
+                            selectByMouse: true
+                            selectionColor: "gray"
+                            selectByKeyboard: false
+                            text : "Log Info\n"
+                            font{family:"微软雅黑";pixelSize:15}
+                            color: "white"
+                            onContentHeightChanged:{
+                                    dataText.cursorPosition = dataText.length-1
+                                }
+                            }
                         
-                        // Component.onCompleted:{
-                        //     flickableItem.contentY = flickableItem.contentHeight
-                        //     flickableItem.contentX = flickableItem.contentWidth
-                        // }
                     }
+                    // onContentHeightChanged:{
+                    //         view.scrollToBottom()
+                    //     }
         
                 }
                 
