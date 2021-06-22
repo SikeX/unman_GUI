@@ -522,7 +522,7 @@ import "./qmls"
             // dataText.text += "\n" + attrs.counter
             dataText.text += Radar_det.radar_detect() + "\n"
             ais_obj_info = Djson.readJsonFile("ais_result.json")
-            Ais_det.ais_det()
+            dataText.text += Ais_det.ais_det() + "\n"
             obj_info = Djson.readJsonFile("radar_result.json")
             radardata = obj_info.param.target
             ais_data = ais_obj_info.param.aisInfo

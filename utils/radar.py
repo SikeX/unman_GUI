@@ -61,7 +61,7 @@ class Radar:
             f.write(radar_result)
 
         if(ip == "127.0.0.1"):
-            return "本地地址"
+            return "radar本地地址"
         else:
             s.sendto(str(radar_result).encode('utf-8'),(ip,port))
             revData = s.recv(1024).decode('utf-8')

@@ -61,4 +61,4 @@ class Ais_det(QObject):
         for k in range(len(aisdata)):
             #print('AIS{}在第{}秒的检测结果'.format(k+1,t))
             #print('----------------')
-            ais[k+1].run([ais_obj[i].move() for i in range(obj_num)], self.ip_p)
+            return ais[k+1].run([ais_obj[i].move() for i in range(obj_num)], self.ip_p)
