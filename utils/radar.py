@@ -65,7 +65,7 @@ class Radar:
         else:
             s.sendto(str(radar_result).encode('utf-8'),(ip,port))
             revData = s.recv(1024).decode('utf-8')
-            print(revData, type(revData))
+            print(revData)
             return revData
         
         
